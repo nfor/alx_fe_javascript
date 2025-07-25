@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Quote App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quotes App</title>
 </head>
 <body>
-  <h1>Quote Manager</h1>
+  <h1>Quotes App</h1>
 
   <form id="addQuoteForm">
     <input type="text" id="quoteText" placeholder="Enter quote" required />
-    <input type="text" id="quoteAuthor" placeholder="Author" required />
-    <input type="text" id="quoteCategory" placeholder="Category" required />
+    <input type="text" id="quoteAuthor" placeholder="Enter author" required />
+    <input type="text" id="quoteCategory" placeholder="Enter category" required />
     <button type="submit">Add Quote</button>
   </form>
 
@@ -18,12 +19,12 @@
     <option value="all">All Categories</option>
   </select>
 
-  <button onclick="showRandomQuote()">Show New Quote</button>
+  <ul id="quotesList"></ul>
+
   <button onclick="exportToJson()">Export Quotes</button>
   <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
 
-  <div id="quoteDisplay"></div>
-  <div id="notification" style="color: red;"></div>
+  <div id="conflictMessage" style="color:red; display:none;"></div>
 
   <script src="script.js"></script>
 </body>
