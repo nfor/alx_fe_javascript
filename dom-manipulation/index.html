@@ -1,31 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Quote Sync App</title>
+  <meta charset="UTF-8" />
+  <title>Quote App</title>
 </head>
 <body>
-  <h1>Quote Sync App</h1>
+  <h1>Quote Manager</h1>
+
+  <form id="addQuoteForm">
+    <input type="text" id="quoteText" placeholder="Enter quote" required />
+    <input type="text" id="quoteAuthor" placeholder="Author" required />
+    <input type="text" id="quoteCategory" placeholder="Category" required />
+    <button type="submit">Add Quote</button>
+  </form>
 
   <select id="categoryFilter" onchange="filterQuotes()">
     <option value="all">All Categories</option>
   </select>
 
+  <button onclick="showRandomQuote()">Show New Quote</button>
+  <button onclick="exportToJson()">Export Quotes</button>
+  <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
+
   <div id="quoteDisplay"></div>
-  <button onclick="showNewQuote()">Show New Quote</button>
-
-  <h2>Add New Quote</h2>
-  <form id="quoteForm">
-    <input type="text" id="quoteText" placeholder="Quote" required>
-    <input type="text" id="quoteCategory" placeholder="Category" required>
-    <button type="submit">Add Quote</button>
-  </form>
-
-  <h2>Import/Export</h2>
-  <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)">
-  <button onclick="exportToJsonFile()">Export Quotes</button>
-
-  <div id="syncStatus" style="margin-top:20px;color:blue;"></div>
+  <div id="notification" style="color: red;"></div>
 
   <script src="script.js"></script>
 </body>
