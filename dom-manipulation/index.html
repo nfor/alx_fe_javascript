@@ -7,14 +7,29 @@
 </head>
 <body>
   <h1>Dynamic Quote Generator</h1>
-  
-  <div id="app"></div>
 
-  <!-- Export Quotes Button -->
-  <button id="exportQuotesBtn" style="margin-top: 20px;">Export Quotes</button>
+  <!-- Category Filter -->
+  <label for="categoryFilter">Filter by category:</label>
+  <select id="categoryFilter" onchange="filterQuotes()">
+    <option value="all">All Categories</option>
+  </select>
 
-  <!-- Import JSON Quotes -->
-  <input type="file" id="importFile" accept=".json" style="margin-top: 10px;" />
+  <!-- Quote Display -->
+  <div id="quoteDisplay"></div>
+  <button id="newQuote">Show New Quote</button>
+
+  <!-- Add New Quote -->
+  <div>
+    <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
+    <input id="newQuoteCategory" type="text" placeholder="Enter quote category" />
+    <button onclick="addQuote()">Add Quote</button>
+  </div>
+
+  <!-- Import/Export -->
+  <div>
+    <button onclick="exportQuotes()">Export Quotes</button>
+    <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
+  </div>
 
   <script src="script.js"></script>
 </body>
