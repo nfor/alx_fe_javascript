@@ -11,7 +11,6 @@ function loadQuotes() {
   if (saved) {
     quotes = JSON.parse(saved);
   } else {
-    // Default quotes if local storage is empty
     quotes = [
       { text: "The best way to get started is to quit talking and begin doing.", category: "Motivation" },
       { text: "Don't let yesterday take up too much of today.", category: "Inspiration" },
@@ -28,7 +27,6 @@ function showRandomQuote() {
   const quote = quotes[randomIndex];
 
   quoteDisplay.innerHTML = `<p>"${quote.text}"<br><em>(${quote.category})</em></p>`;
-
   sessionStorage.setItem('lastQuote', JSON.stringify(quote));
 }
 
@@ -81,13 +79,6 @@ function createAddQuoteForm() {
   addBtn.addEventListener("click", addQuote);
   form.appendChild(addBtn);
 
-  // Export Button
-  const exportBtn = document.createElement("button");
-  exportBtn.textContent = "Export Quotes";
-  exportBtn.style.marginLeft = "10px";
-  exportBtn.addEventListener("click", exportToJsonFile);
-  form.appendChild(exportBtn);
-
   app.appendChild(form);
 }
 
@@ -126,10 +117,14 @@ document.getElementById("importFile").addEventListener("change", function (event
   reader.readAsText(file);
 });
 
+// Export button from HTML
+document.getElementById("exportQuotesBtn").addEventListener("click", exportToJsonFile);
+
 // Init
 window.onload = () => {
   loadQuotes();
   createAddQuoteForm();
+
   const lastQuote = sessionStorage.getItem('lastQuote');
   if (lastQuote) {
     const quote = JSON.parse(lastQuote);
